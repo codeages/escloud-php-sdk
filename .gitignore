@@ -4,3 +4,4 @@ vendor/
 /test.php
 composer.lock
 .php_cs.cache
+/demo/vendor/
