@@ -34,7 +34,7 @@ class ResourceService extends BaseService
      * @throws ResponseException
      * @throws SDKException
      */
-    public function finishUpload(string $no)
+    public function finishUpload($no)
     {
         return $this->request('POST', '/upload/finish', array('no' => $no));
     }
@@ -46,7 +46,7 @@ class ResourceService extends BaseService
      * @throws ResponseException
      * @throws SDKException
      */
-    public function get(string $no)
+    public function get($no)
     {
         return $this->request('GET', '/resources/' . $no);
     }
@@ -71,7 +71,7 @@ class ResourceService extends BaseService
      * @throws ResponseException
      * @throws SDKException
      */
-    public function getDownloadUrl(string $no, array $params = array())
+    public function getDownloadUrl($no, array $params = array())
     {
         return $this->request('GET', '/resources/' . $no . '/downloadUrl', $params);
     }
@@ -84,7 +84,7 @@ class ResourceService extends BaseService
      * @throws ResponseException
      * @throws SDKException
      */
-    public function rename(string $no, string $name)
+    public function rename($no, string $name)
     {
         return $this->request('PUT', '/resources/' . $no . '/name', ['name' => $name]);
     }
@@ -96,7 +96,7 @@ class ResourceService extends BaseService
      * @throws ResponseException
      * @throws SDKException
      */
-    public function delete(string $no)
+    public function delete($no)
     {
         return $this->request('DELETE', '/resources/' . $no);
     }
