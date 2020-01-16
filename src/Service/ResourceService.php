@@ -84,7 +84,7 @@ class ResourceService extends BaseService
      * @throws ResponseException
      * @throws SDKException
      */
-    public function rename($no, string $name)
+    public function rename($no, $name)
     {
         return $this->request('PUT', '/resources/' . $no . '/name', ['name' => $name]);
     }
