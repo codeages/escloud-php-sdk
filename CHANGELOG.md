@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.1.0
+* 增加demo
+* 支持php5.6
+
 ## v1.0.0
 
 * 提供全新ESCloud SDK
