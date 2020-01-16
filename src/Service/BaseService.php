@@ -84,7 +84,7 @@ abstract class BaseService
     }
 
     /**
-     * 气球云 API V2 的统一请求方法
+     * API V2 的统一请求方法
      *
      * @param $method
      * @param $uri

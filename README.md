@@ -34,7 +34,7 @@ $sdk->getXAPIService();
 $sdk->getDrpService();
 ```
 
-气球云为网校接入提供了测试环境，用于发调试。通过设置`host`配置项，即可使用测试环境的服务，例如短信测试服务：
+我们为网校接入提供了测试环境，用于调试。通过设置`host`配置项，即可使用测试环境的服务，例如短信测试服务：
 
 ```php
 $sdk = new \ESCloud\SDK\ESCloudSDK(array(
