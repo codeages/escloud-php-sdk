@@ -22,6 +22,9 @@ switch ($action) {
     case 'getDownloadUrl':
         getDownloadUrl();
         break;
+    case 'getThumbnails':
+        getThumbnails();
+        break;
 }
 
 function getResource()
@@ -79,5 +82,15 @@ function renameResource()
     $name = $_POST['name'];
 
     echo json_encode($sdk->getResourceService()->rename($no, $name));
+}
+
+function getThumbnails()
+{
+    Permission::check($_GET['exp'], $_GET['token']);
+
+    $sdk = Sdk::init();
+    $no = $_GET['no'];
+
+    echo json_encode($sdk->getResourceService()->getThumbnails($no));
 }
 

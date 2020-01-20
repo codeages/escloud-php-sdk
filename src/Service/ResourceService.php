@@ -100,4 +100,16 @@ class ResourceService extends BaseService
     {
         return $this->request('DELETE', '/resources/' . $no);
     }
+
+    /**
+     * @param string $no
+     * @return mixed
+     * @throws ClientException
+     * @throws ResponseException
+     * @throws SDKException
+     */
+    public function getThumbnails($no)
+    {
+        return $this->request('GET', '/resources/' . $no . '/thumbnails');
+    }
 }
