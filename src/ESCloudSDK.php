@@ -2,6 +2,7 @@
 
 namespace ESCloud\SDK;
 
+use ESCloud\SDK\Service\InspectionService;
 use Psr\Log\LoggerInterface;
 use ESCloud\SDK\HttpClient\ClientInterface;
 use ESCloud\SDK\Exception\SDKException;
@@ -136,6 +137,14 @@ class ESCloudSDK
     public function getWeChatService()
     {
         return $this->getService('WeChat');
+    }
+
+    /**
+     * @return InspectionService
+     */
+    public function getInspectionService()
+    {
+        return $this->getService('Inspection', true);
     }
 
     /**
