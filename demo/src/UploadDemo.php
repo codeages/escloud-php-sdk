@@ -13,6 +13,9 @@ switch ($action) {
     case 'finishUpload':
         finishUpload();
         break;
+    case 'upload':
+        upload();
+        break;
 }
 
 /*
@@ -46,4 +49,20 @@ function finishUpload()
     $no = $_POST['no'];
 
     echo json_encode($sdk->getResourceService()->finishUpload($no));
+}
+
+
+/*
+ * 上传完成接口
+ */
+function upload()
+{
+    Permission::check($_GET['exp'], $_GET['token']);
+
+    $sdk = Sdk::init();
+    $params['name'] = $_POST['name'];
+    $params['extno'] = $_POST['extno'];
+    $filepath = $_POST['filepath'];
+
+    echo json_encode($sdk->getResourceService()->upload($filepath, $params));
 }
