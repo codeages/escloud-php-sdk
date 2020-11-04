@@ -53,7 +53,8 @@ function finishUpload()
 
 
 /*
- * 上传完成接口
+ * 上传文件接口
+ * 如果需要断点续传，$params再传一个resumeNo(即之前失败的no)
  */
 function upload()
 {
