@@ -155,6 +155,11 @@ class ESCloudSDK
         return $this->getService('Mobile');
     }
 
+    public function getScrmService()
+    {
+        return $this->getService('Scrm');
+    }
+    
     /**
      * 根据服务名获得服务实例
      *
