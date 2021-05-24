@@ -156,6 +156,14 @@ class ESCloudSDK
     }
 
     /**
+     * @return \ESCloud\SDK\Service\SearchService
+     */
+    public function getSearchService()
+    {
+        return $this->getService('Search');
+    }
+
+    /**
      * 根据服务名获得服务实例
      *
      * @param string $name 服务名
