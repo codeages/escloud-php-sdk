@@ -18,7 +18,6 @@ use ESCloud\SDK\Service\ScrmService;
 use ESCloud\SDK\Service\SearchService;
 use ESCloud\SDK\Service\SmsService;
 use ESCloud\SDK\Service\WeChatService;
-use ESCloud\SDK\Service\XAPIService;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 
@@ -84,16 +83,6 @@ class ESCloudSDK
     public function getPlayService()
     {
         return $this->getService('Play');
-    }
-
-    /**
-     * 获取XAPI服务
-     *
-     * @return XAPIService
-     */
-    public function getXAPIService()
-    {
-        return $this->getService('XAPI');
     }
 
     /**

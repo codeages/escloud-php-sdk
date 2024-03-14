@@ -80,18 +80,6 @@ class Auth
     }
 
     /**
-     * 制作XAPI的请求授权信息
-     */
-    public function makeXAPIRequestAuthorization(): string
-    {
-        $deadline = strtotime(date('Y-m-d H:0:0', strtotime('+2 hours')));
-        $signingText = $this->getAccessKey()."\n".$deadline;
-        $signature = $this->getAccessKey().':'.$deadline.':'.$this->makeSignature($signingText);
-
-        return "Signature $signature";
-    }
-
-    /**
      * 生成 Jwt Token
      *
      * @param array $payload 载荷
