@@ -1,9 +1,10 @@
 <?php
-require __DIR__ . '/../../vendor/autoload.php';
+
+require __DIR__.'/../../vendor/autoload.php';
 
 use ESCloud\SDK\ESCloudSDK;
 
-$config =  require  __DIR__  . '/../config.php';
+$config = require __DIR__.'/../config.php';
 $sdk = new ESCloudSDK($config);
 
 $token = $sdk->getPlayService()->makePlayToken(

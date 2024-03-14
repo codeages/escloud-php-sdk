@@ -2,14 +2,14 @@
 
 namespace ESCloud\SDK\Service;
 
-use ESCloud\SDK\Auth;
-use ESCloud\SDK\HttpClient\Client;
-use Psr\Log\LoggerInterface;
-use ESCloud\SDK\HttpClient\ClientInterface;
-use ESCloud\SDK\Exception\SDKException;
-use ESCloud\SDK\HttpClient\Response;
-use ESCloud\SDK\Exception\ResponseException;
 use ESCloud\SDK;
+use ESCloud\SDK\Auth;
+use ESCloud\SDK\Exception\ResponseException;
+use ESCloud\SDK\Exception\SDKException;
+use ESCloud\SDK\HttpClient\Client;
+use ESCloud\SDK\HttpClient\ClientInterface;
+use ESCloud\SDK\HttpClient\Response;
+use Psr\Log\LoggerInterface;
 
 abstract class BaseService
 {
@@ -90,10 +90,10 @@ abstract class BaseService
      *
      * @param $method
      * @param $uri
-     * @param array $data
-     * @param array $headers
      * @param string $node
+     *
      * @return mixed
+     *
      * @throws ResponseException
      * @throws SDKException
      * @throws SDK\HttpClient\ClientException
@@ -104,7 +104,7 @@ abstract class BaseService
 
         if (!empty($data)) {
             if ('GET' === strtoupper($method) && !empty($data)) {
-                $uri = $uri . (strpos($uri, '?') > 0 ? '&' : '?') . http_build_query($data);
+                $uri = $uri.(strpos($uri, '?') > 0 ? '&' : '?').http_build_query($data);
             } else {
                 if (version_compare(phpversion(), '5.4.0', '>=')) {
                     $options['body'] = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
@@ -133,8 +133,8 @@ abstract class BaseService
     /**
      * 从Response中抽取API返回结果
      *
-     * @param Response $response
      * @return mixed
+     *
      * @throws ResponseException
      * @throws SDKException
      */
@@ -143,13 +143,13 @@ abstract class BaseService
         try {
             $result = SDK\json_decode($response->getBody(), true);
         } catch (\Exception $e) {
-            throw new SDKException($e->getMessage() . "(response: {$response->getBody()}");
+            throw new SDKException($e->getMessage()."(response: {$response->getBody()}");
         }
 
         $responseCode = $response->getHttpResponseCode();
 
         if ($responseCode < 200 || $responseCode > 299 || isset($result['error'])) {
-            $this->logger && $this->logger->error((string)$response);
+            $this->logger && $this->logger->error((string) $response);
             throw new ResponseException($response);
         }
 
@@ -162,7 +162,9 @@ abstract class BaseService
      * @param $uri
      * @param string $protocol
      * @param string $node
+     *
      * @return string
+     *
      * @throws SDKException
      */
     protected function getRequestUri($uri, $protocol = 'http', $node = 'root')
@@ -178,15 +180,15 @@ abstract class BaseService
             $host = current($host);
         }
 
-        $host = (string)$host;
+        $host = (string) $host;
 
         if (!$host) {
             throw new SDKException('API host is not exist or invalid.');
         }
 
-        $uri = ('/' !== substr($uri, 0, 1) ? '/' : '') . $uri;
+        $uri = ('/' !== substr($uri, 0, 1) ? '/' : '').$uri;
 
-        return ('auto' == $protocol ? '//' : $protocol . '://') . $host . $uri;
+        return ('auto' == $protocol ? '//' : $protocol.'://').$host.$uri;
     }
 
     protected function filterOptions(array $options = array())

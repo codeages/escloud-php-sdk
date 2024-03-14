@@ -86,7 +86,7 @@ class Auth
      *
      * @return string 资源播放Token
      */
-    public function makeJwtToken(array $payload = []): string
+    public function makeJwtToken(array $payload = array()): string
     {
         return JWT::encode($payload, $this->secretKey, 'HS256');
     }

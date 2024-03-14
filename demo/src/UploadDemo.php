@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+
+require_once __DIR__.'/../vendor/autoload.php';
 
 use ESCloud\SDKDemo\Permission\Permission;
 use ESCloud\SDKDemo\Sdk\Sdk;
@@ -50,7 +51,6 @@ function finishUpload()
 
     echo json_encode($sdk->getResourceService()->finishUpload($no));
 }
-
 
 /*
  * 上传文件接口

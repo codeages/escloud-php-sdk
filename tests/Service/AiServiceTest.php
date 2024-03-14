@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\Service\AiService;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class AiServiceTest extends BaseTestCase
 {

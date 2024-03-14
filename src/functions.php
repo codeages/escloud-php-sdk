@@ -46,8 +46,7 @@ namespace ESCloud\SDK {
         }
 
         if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new \InvalidArgumentException(
-                'json_decode error: '.json_last_error_msg());
+            throw new \InvalidArgumentException('json_decode error: '.json_last_error_msg());
         }
 
         return $data;
@@ -61,6 +60,7 @@ namespace ESCloud\SDK {
         for ($i = 0; $i < $length; ++$i) {
             $str .= $keyspace[random_int(0, $max)];
         }
+
         return $str;
     }
 }

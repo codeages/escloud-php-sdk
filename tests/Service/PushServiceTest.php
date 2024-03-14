@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\Service\PushService;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class PushServiceTest extends BaseTestCase
 {

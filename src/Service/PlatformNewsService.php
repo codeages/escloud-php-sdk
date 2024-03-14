@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Service;
 
-use ESCloud\SDK\Constants\PlatformNewsBlockTypes;
 use ESCloud\SDK\Constants\EditionTypes;
+use ESCloud\SDK\Constants\PlatformNewsBlockTypes;
 
 /**
  * Open站
@@ -17,7 +17,6 @@ class PlatformNewsService extends BaseService
      *
      * @param $limit
      * @param $edition
-     *
      *
      * @return array
      *               id   int  区块id

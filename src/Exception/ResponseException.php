@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Exception;
 
-use ESCloud\SDK\HttpClient\Response;
 use ESCloud\SDK;
+use ESCloud\SDK\HttpClient\Response;
 
 class ResponseException extends SDKException
 {

@@ -9,16 +9,15 @@ class ResourceServiceTest extends BaseTestCase
 {
     public function testStartUpload()
     {
-        $mock = ['no' => 'fc8ea8c24d7945da86b9d49a82ee16b7', 'uploadUrl' => '//upload.qiqiuyun.net', 'reskey' => '1577089429/5e007995f3d5794220468', 'uploadToken' => 'test_token_1'];
+        $mock = array('no' => 'fc8ea8c24d7945da86b9d49a82ee16b7', 'uploadUrl' => '//upload.qiqiuyun.net', 'reskey' => '1577089429/5e007995f3d5794220468', 'uploadToken' => 'test_token_1');
         $httpClient = $this->mockHttpClient($mock);
         $service = new ResourceService($this->auth, array(), null, $httpClient);
-        $result = $service->startUpload(['name' => 'test.mp4', 'extno' => 'test_extno_1']);
+        $result = $service->startUpload(array('name' => 'test.mp4', 'extno' => 'test_extno_1'));
 
         $this->assertEquals($mock['no'], $result['no']);
         $this->assertEquals($mock['uploadUrl'], $result['uploadUrl']);
         $this->assertEquals($mock['reskey'], $result['reskey']);
     }
-
 
     public function testFinishUpload()
     {
@@ -47,9 +46,9 @@ class ResourceServiceTest extends BaseTestCase
     public function testSearch()
     {
         $resource = $this->mockResource();
-        $httpClient = $this->mockHttpClient([$resource]);
+        $httpClient = $this->mockHttpClient(array($resource));
         $service = new ResourceService($this->auth, array(), null, $httpClient);
-        $result = $service->search([]);
+        $result = $service->search(array());
 
         $this->assertEquals($resource['no'], $result[0]['no']);
         $this->assertEquals($resource['extno'], $result[0]['extno']);
@@ -59,7 +58,7 @@ class ResourceServiceTest extends BaseTestCase
     public function testGetDownloadUrl()
     {
         $resource = $this->mockResource();
-        $httpClient = $this->mockHttpClient(['downloadUrl' => 'http://downloadUrl.qiqiuyun.net']);
+        $httpClient = $this->mockHttpClient(array('downloadUrl' => 'http://downloadUrl.qiqiuyun.net'));
         $service = new ResourceService($this->auth, array(), null, $httpClient);
         $result = $service->getDownloadUrl($resource['no']);
 
@@ -81,7 +80,7 @@ class ResourceServiceTest extends BaseTestCase
     public function testDelete()
     {
         $resource = $this->mockResource();
-        $httpClient = $this->mockHttpClient(['success' => true]);
+        $httpClient = $this->mockHttpClient(array('success' => true));
         $service = new ResourceService($this->auth, array(), null, $httpClient);
         $result = $service->delete($resource['no']);
 
@@ -102,7 +101,7 @@ class ResourceServiceTest extends BaseTestCase
             'isShare' => 1,
             'processedTime' => 1548915578,
             'createdTime' => 1548915578,
-            'updatedTIme' => 1548915578
+            'updatedTIme' => 1548915578,
         );
     }
 }

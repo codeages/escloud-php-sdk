@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\ESCloudSDK;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class ESCloudSDKTest extends BaseTestCase
 {

@@ -21,8 +21,8 @@ class ResumeUploader
     public function __construct($filePath, $upToken, $key, $mime, $recorder)
     {
         $file = fopen($filePath, 'rb');
-        if ($file === false) {
-            throw new \Exception("file can not open", 1);
+        if (false === $file) {
+            throw new \Exception('file can not open', 1);
         }
         $stat = fstat($file);
         $this->size = $stat['size'];
@@ -45,8 +45,8 @@ class ResumeUploader
         while ($uploaded < $this->size) {
             $blockSize = $this->blockSize($uploaded);
             $data = fread($this->inputStream, $blockSize);
-            if ($data === false) {
-                throw new \Exception("file read failed", 1);
+            if (false === $data) {
+                throw new \Exception('file read failed', 1);
             }
             $response = $this->makeBlock($data, $blockSize);
             $result = json_decode($response->getBody(), true);
@@ -54,6 +54,7 @@ class ResumeUploader
             $uploaded += $blockSize;
             $this->setRecord($uploaded);
         }
+
         return $this->makeFile($filename);
     }
 
@@ -62,24 +63,26 @@ class ResumeUploader
      */
     private function makeBlock($block, $blockSize)
     {
-        $url = $this->host . '/mkblk/' . $blockSize;
+        $url = $this->host.'/mkblk/'.$blockSize;
+
         return $this->post($url, $block);
     }
 
     private function fileUrl($fname)
     {
-        $url = $this->host . '/mkfile/' . $this->size;
-        $url .= '/mimeType/' . $this->base64_urlSafeEncode($this->mime);
-        if ($this->key != null) {
-            $url .= '/key/' . $this->base64_urlSafeEncode($this->key);
+        $url = $this->host.'/mkfile/'.$this->size;
+        $url .= '/mimeType/'.$this->base64_urlSafeEncode($this->mime);
+        if (null != $this->key) {
+            $url .= '/key/'.$this->base64_urlSafeEncode($this->key);
         }
-        $url .= '/fname/' . $this->base64_urlSafeEncode($fname);
+        $url .= '/fname/'.$this->base64_urlSafeEncode($fname);
         if (!empty($this->params)) {
             foreach ($this->params as $key => $value) {
                 $val = $this->base64_urlSafeEncode($value);
                 $url .= "/$key/$val";
             }
         }
+
         return $url;
     }
 
@@ -98,8 +101,9 @@ class ResumeUploader
 
     private function post($url, $data)
     {
-        $options['headers'] = array('Authorization' => 'UpToken ' . $this->upToken);
+        $options['headers'] = array('Authorization' => 'UpToken '.$this->upToken);
         $options['body'] = $data;
+
         return $this->createClient()->request('POST', $url, $options);
     }
 
@@ -108,13 +112,15 @@ class ResumeUploader
         if ($this->size < $uploaded + self::BLOCK_SIZE) {
             return $this->size - $uploaded;
         }
+
         return self::BLOCK_SIZE;
     }
 
-    function base64_urlSafeEncode($data)
+    public function base64_urlSafeEncode($data)
     {
         $find = array('+', '/');
         $replace = array('-', '_');
+
         return str_replace($find, $replace, base64_encode($data));
     }
 
@@ -136,9 +142,10 @@ class ResumeUploader
         $content = $this->recorder->get($recorderKey);
 
         if ($content) {
-            for ($i = 0; $i < count($content['contexts']); $i++) {
+            for ($i = 0; $i < count($content['contexts']); ++$i) {
                 $this->contexts[$i] = $content['contexts'][$i];
             }
+
             return $content['offset'];
         }
 

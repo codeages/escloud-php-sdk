@@ -2,9 +2,9 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
+use ESCloud\SDK\Auth;
 use ESCloud\SDK\Service\SearchService;
 use ESCloud\SDK\Tests\BaseTestCase;
-use ESCloud\SDK\Auth;
 
 class SearchServiceTest extends BaseTestCase
 {
@@ -18,7 +18,7 @@ class SearchServiceTest extends BaseTestCase
 
     public function testCreateAccount()
     {
-        $mock = ['success' => true];
+        $mock = array('success' => true);
         $httpClient = $this->mockHttpClient($mock);
         $service = new SearchService($this->auth, array(), null, $httpClient);
         $result = $service->createAccount();
@@ -28,21 +28,20 @@ class SearchServiceTest extends BaseTestCase
 
     public function testReport()
     {
-        $mock = ['success' => true];
+        $mock = array('success' => true);
         $httpClient = $this->mockHttpClient($mock);
         $service = new SearchService($this->auth, array(), null, $httpClient);
-        $result = $service->report('course', ['resources' =>
-            json_encode([
-                ['id' => 1, 'title' => 'course1', 'lessons' => [['title' => 'lesson1'], ['title' => 'lesson2']]],
-                ['id' => 2, 'title' => 'course2', 'lessons' => [['title' => 'lesson3'], ['title' => 'lesson4']]]
-            ])]);
+        $result = $service->report('course', array('resources' => json_encode(array(
+                array('id' => 1, 'title' => 'course1', 'lessons' => array(array('title' => 'lesson1'), array('title' => 'lesson2'))),
+                array('id' => 2, 'title' => 'course2', 'lessons' => array(array('title' => 'lesson3'), array('title' => 'lesson4'))),
+            ))));
 
         $this->assertTrue($result['success']);
     }
 
     public function testDeleteData()
     {
-        $mock = ['success' => true];
+        $mock = array('success' => true);
         $httpClient = $this->mockHttpClient($mock);
         $service = new SearchService($this->auth, array(), null, $httpClient);
         $result = $service->deleteData('course', 1);
@@ -52,20 +51,20 @@ class SearchServiceTest extends BaseTestCase
 
     public function testRestartReport()
     {
-        $mock = ['success' => true];
+        $mock = array('success' => true);
         $httpClient = $this->mockHttpClient($mock);
         $service = new SearchService($this->auth, array(), null, $httpClient);
-        $result = $service->restartReport(['categories' => json_encode(['course', 'classroom'])]);
+        $result = $service->restartReport(array('categories' => json_encode(array('course', 'classroom'))));
 
         $this->assertTrue($result['success']);
     }
 
     public function testRestartReportFinish()
     {
-        $mock = ['success' => true];
+        $mock = array('success' => true);
         $httpClient = $this->mockHttpClient($mock);
         $service = new SearchService($this->auth, array(), null, $httpClient);
-        $result = $service->restartReportFinish(['categories' => json_encode(['course', 'classroom'])]);
+        $result = $service->restartReportFinish(array('categories' => json_encode(array('course', 'classroom'))));
 
         $this->assertTrue($result['success']);
     }

@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+
+require_once __DIR__.'/../vendor/autoload.php';
 
 use ESCloud\SDKDemo\Permission\Permission;
 use ESCloud\SDKDemo\Sdk\Sdk;
@@ -38,7 +39,6 @@ function getResource()
     $no = $_GET['no'];
 
     echo json_encode($sdk->getResourceService()->get($no));
-
 }
 
 /*
@@ -68,7 +68,6 @@ function deleteResource()
     $no = $_POST['no'];
 
     echo json_encode($sdk->getResourceService()->delete($no));
-
 }
 
 /*
@@ -82,7 +81,6 @@ function getDownloadUrl()
     $no = $_POST['no'];
 
     echo json_encode($sdk->getResourceService()->getDownloadUrl($no));
-
 }
 
 /*
@@ -112,4 +110,3 @@ function getThumbnails()
 
     echo json_encode($sdk->getResourceService()->getThumbnails($no));
 }
-

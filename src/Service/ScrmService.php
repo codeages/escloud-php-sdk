@@ -40,7 +40,7 @@ class ScrmService extends BaseService
 
     public function getUserByToken($token)
     {
-         return $this->request('GET',  '/api/console/customer/byToken', array('token' => $token));
+        return $this->request('GET', '/api/console/customer/byToken', array('token' => $token));
     }
 
     public function verifyOrder($orderId, $token)
