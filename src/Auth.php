@@ -17,11 +17,12 @@ class Auth
 
     /**
      * Auth constructor.
+     *
      * @param $accessKey
      * @param $secretKey
      * @param bool $useJwt 新的服务将启用 JWT 作为鉴权的 Token
      */
-    public function __construct($accessKey, $secretKey, $useJwt = false)
+    public function __construct($accessKey, $secretKey, bool $useJwt = false)
     {
         $this->accessKey = $accessKey;
         $this->secretKey = $secretKey;
@@ -40,7 +41,7 @@ class Auth
      *
      * @return string 签名
      */
-    public function makeSignature($text)
+    public function makeSignature(string $text): string
     {
         $signature = hash_hmac('sha1', $text, $this->secretKey, true);
 
@@ -50,20 +51,20 @@ class Auth
     /**
      * 制作API请求的授权信息
      *
-     * @param string $uri HTTP 请求的 URI
-     * @param string $body HTTP 请求的 BODY
-     * @param int $lifetime 授权生命周期
-     * @param bool $useNonce 授权随机值避免重放攻击
+     * @param string $uri      HTTP 请求的 URI
+     * @param string $body     HTTP 请求的 BODY
+     * @param int    $lifetime 授权生命周期
+     * @param bool   $useNonce 授权随机值避免重放攻击
      *
      * @return string 授权信息
      */
-    public function makeRequestAuthorization($uri, $body = '', $lifetime = 600, $useNonce = true, $service)
+    public function makeRequestAuthorization(string $uri, string $body = '', int $lifetime = 600, bool $useNonce = true, $service = 'es-cloud-default'): string
     {
         if ($this->useJwt) {
             $payload = array(
                 'jti' => strtolower(Sdk\random_str(16)),
                 'exp' => time() + $lifetime,
-                'iss' => $service
+                'iss' => $service,
             );
 
             $token = JWT::encode($payload, $this->secretKey, 'HS256', $this->accessKey);
@@ -78,15 +79,14 @@ class Auth
         }
     }
 
-
     /**
      * 制作XAPI的请求授权信息
      */
-    public function makeXAPIRequestAuthorization()
+    public function makeXAPIRequestAuthorization(): string
     {
         $deadline = strtotime(date('Y-m-d H:0:0', strtotime('+2 hours')));
-        $signingText = $this->getAccessKey() . "\n" . $deadline;
-        $signature = $this->getAccessKey() . ':' . $deadline . ':' . $this->makeSignature($signingText);
+        $signingText = $this->getAccessKey()."\n".$deadline;
+        $signature = $this->getAccessKey().':'.$deadline.':'.$this->makeSignature($signingText);
 
         return "Signature $signature";
     }
@@ -98,7 +98,7 @@ class Auth
      *
      * @return string 资源播放Token
      */
-    public function makeJwtToken($payload = array())
+    public function makeJwtToken(array $payload = []): string
     {
         return JWT::encode($payload, $this->secretKey, 'HS256');
     }

@@ -7,10 +7,6 @@ use ESCloud\SDK\Service\DrpService;
 
 class DrpServiceTest extends BaseTestCase
 {
-    public function testPostData()
-    {
-    }
-
     public function testParseRegisterToken_normal()
     {
         $data = array(

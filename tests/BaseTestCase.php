@@ -17,7 +17,7 @@ abstract class BaseTestCase extends TestCase
      */
     protected $auth;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->auth = $this->createAuth();
     }
