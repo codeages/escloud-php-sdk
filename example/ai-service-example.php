@@ -13,6 +13,22 @@ $sdk = new ESCloudSDK(array(
 
 $ai = $sdk->getAIService();
 
+$inspected = $ai->inspectAccount();
+var_dump($inspected);
+
+$ai->disableAccount();
+
+$inspected = $ai->inspectAccount();
+var_dump($inspected);
+
+$ai->enableAccount();
+
+$inspected = $ai->inspectAccount();
+var_dump($inspected);
+
+
+
+
 $url = $ai->makeClientAppCompletionUrl('test');
 
 var_dump($url);

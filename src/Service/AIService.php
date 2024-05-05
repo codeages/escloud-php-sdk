@@ -89,10 +89,10 @@ class AIService extends BaseService
     private function makeClientToken($lifetime)
     {
         $payload = array(
-            'iss' => 'ai client',
+            'iss' => 'AIClient',
             'exp' => time() + $lifetime,
         );
 
-        return $this->auth->makeJwtToken($payload);
+        return $this->auth->makeJwtTokenWithKid($payload);
     }
 }
