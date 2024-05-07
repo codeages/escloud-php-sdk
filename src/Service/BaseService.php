@@ -125,8 +125,6 @@ abstract class BaseService
         $headers['Content-Type'] = 'application/json';
         $options['headers'] = $headers;
 
-        var_dump($this->getRequestUri($uri, 'http', $node));
-
         $response = $this->createClient()->request($method, $this->getRequestUri($uri, 'http', $node), $options);
 
         return $this->extractResultFromResponse($response);

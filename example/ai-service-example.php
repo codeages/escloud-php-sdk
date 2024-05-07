@@ -9,6 +9,11 @@ $env = require __DIR__. '/env.php';
 $sdk = new ESCloudSDK(array(
     'access_key' => $env['access_key'],
     'secret_key' => $env['secret_key'],
+    'service' => array(
+        'ai' => array(
+            'host' => $env['ai_service_host'],
+        )
+    )
 ));
 
 $ai = $sdk->getAIService();
@@ -25,9 +30,6 @@ $ai->enableAccount();
 
 $inspected = $ai->inspectAccount();
 var_dump($inspected);
-
-
-
 
 $url = $ai->makeClientAppCompletionUrl('test');
 
