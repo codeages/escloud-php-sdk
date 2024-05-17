@@ -3,6 +3,7 @@
 namespace ESCloud\SDK;
 
 use ESCloud\SDK\HttpClient\ClientInterface;
+use ESCloud\SDK\Service\AIFaceService;
 use ESCloud\SDK\Service\AIService;
 use ESCloud\SDK\Service\DrpService;
 use ESCloud\SDK\Service\ESopService;
@@ -128,6 +129,14 @@ class ESCloudSDK
     public function getAIService()
     {
         return $this->getService('AI', true);
+    }
+
+    /**
+     * @return AIFaceService
+     */
+    public function getAIFaceService()
+    {
+        return $this->getService('AIFace');
     }
 
     /**
