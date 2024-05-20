@@ -31,6 +31,4 @@ $ai->enableAccount();
 $inspected = $ai->inspectAccount();
 var_dump($inspected);
 
-$url = $ai->makeClientAppCompletionUrl('test');
-
-var_dump($url);
+$ai->startAppCompletion('test', ['query' => 'Hello, world']);

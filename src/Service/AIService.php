@@ -40,11 +40,6 @@ class AIService extends BaseService
     }
 
     /**
-     *
-     * @return array status: none, ok, disabled
-     */
-
-    /**
      * 审视 AI 服务状态
      *
      * @return array status: none, ok, disabled
@@ -59,18 +54,37 @@ class AIService extends BaseService
     }
 
     /**
-     * 停止AI应用的文本补全输出
+     * 开始AI应用的文本补全输出
+     *
      * @param $app
+     * @param $inputs
+     * @return array
+     * @throws ClientException
+     * @throws ResponseException
+     * @throws SDKException
+     */
+    public function startAppCompletion($app, $inputs)
+    {
+        $uri = sprintf('/api/open/app/%s/completion', $app);
+
+        return $this->request('POST', $uri, array('inputs' => $inputs, 'responseMode' => 'streaming'), [], 'root', true);
+    }
+
+    /**
+     * 停止AI应用的文本补全输出
+     *
+     * @param $app
+     * @param $messageId
      * @param $taskId
      * @return void
      * @throws ClientException
      * @throws ResponseException
      * @throws SDKException
      */
-    public function stopAppCompletion($app, $taskId)
+    public function stopAppCompletion($app, $messageId, $taskId)
     {
         $uri = sprintf('/api/open/app/%s/stopCompletion', $app);
-        $this->request('POST', $uri, array('taskId' => $taskId));
+        $this->request('POST', $uri, array('messageId' => $messageId, 'taskId' => $taskId));
     }
 
     /**
