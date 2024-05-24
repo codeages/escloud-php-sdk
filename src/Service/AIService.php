@@ -65,7 +65,7 @@ class AIService extends BaseService
      */
     public function startAppCompletion($app, $inputs)
     {
-        return $this->request('POST', '/api/open/app/completion', array('app' => $app, 'inputs' => $inputs, 'responseMode' => 'blocking'), [], 'root', true);
+        return $this->request('POST', '/api/open/app/completion', array('app' => $app, 'inputs' => $inputs, 'responseMode' => 'blocking'));
     }
 
     /**
