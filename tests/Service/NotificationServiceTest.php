@@ -3,8 +3,8 @@
 namespace ESCloud\SDK\Tests\Service;
 
 use ESCloud\SDK\Constants\NotificationChannelTypes;
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\Service\NotificationService;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class NotificationServiceTest extends BaseTestCase
 {

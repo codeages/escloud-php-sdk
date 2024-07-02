@@ -2,9 +2,9 @@
 
 namespace ESCloud\SDK\Tests;
 
-use PHPUnit\Framework\TestCase;
 use ESCloud\SDK\Auth;
 use ESCloud\SDK\HttpClient\Response;
+use PHPUnit\Framework\TestCase;
 
 abstract class BaseTestCase extends TestCase
 {
@@ -17,7 +17,7 @@ abstract class BaseTestCase extends TestCase
      */
     protected $auth;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->auth = $this->createAuth();
     }

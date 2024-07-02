@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Service;
 
-use ESCloud\SDK\Helper\MarketingHelper;
 use ESCloud\SDK\Exception\SDKException;
+use ESCloud\SDK\Helper\MarketingHelper;
 
 class DrpService extends BaseService
 {

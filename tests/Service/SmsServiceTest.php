@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\Service\SmsService;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class SmsServiceTest extends BaseTestCase
 {

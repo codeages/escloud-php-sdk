@@ -2,10 +2,10 @@
 
 namespace ESCloud\SDK\Tests;
 
-use PHPUnit\Framework\TestCase;
 use ESCloud\SDK\HttpClient\Client;
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {

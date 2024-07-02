@@ -2,8 +2,8 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\ESCloudSDK;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class ESCloudSDKTest extends BaseTestCase
 {
@@ -13,8 +13,8 @@ class ESCloudSDKTest extends BaseTestCase
             'access_key' => $this->accessKey,
             'secret_key' => $this->secretKey,
             'service' => array(
-                'xapi' => array(
-                    'school_name' => '测试网校',
+                'sms' => array(
+                    'host' => 'sms-service.test.qiqiuyun.net', // 每个服务，都有自己的必需的配置项，如需调用则必需配置该服务的配置项
                 ),
             ),
         ));
@@ -23,7 +23,6 @@ class ESCloudSDKTest extends BaseTestCase
         $this->assertInstanceOf('ESCloud\\SDK\\Service\\AIFaceService', $sdk->getAIFaceService());
         $this->assertInstanceOf('ESCloud\\SDK\\Service\\SmsService', $sdk->getSmsService());
         $this->assertInstanceOf('ESCloud\\SDK\\Service\\PlayService', $sdk->getPlayService());
-        $this->assertInstanceOf('ESCloud\\SDK\\Service\\XAPIService', $sdk->getXAPIService());
         $this->assertInstanceOf('ESCloud\\SDK\\Service\\DrpService', $sdk->getDrpService());
     }
 }

@@ -16,8 +16,8 @@ class FileRecorder
 
     public function get($key)
     {
-        if (file_exists($this->directory . $key)) {
-            return json_decode(file_get_contents($this->directory . $key));
+        if (file_exists($this->directory.$key)) {
+            return json_decode(file_get_contents($this->directory.$key));
         }
 
         return array();
@@ -25,16 +25,16 @@ class FileRecorder
 
     public function set($key, $content)
     {
-        return file_put_contents($this->directory . $key, json_encode($content));
+        return file_put_contents($this->directory.$key, json_encode($content));
     }
 
     public function recorderKeyGenerate($key, $filePath)
     {
-        return hash_hmac('sha1', $key . filemtime($filePath) . $filePath, $key);
+        return hash_hmac('sha1', $key.filemtime($filePath).$filePath, $key);
     }
 
     public function del($key)
     {
-        return unlink($this->directory . $key);
+        return unlink($this->directory.$key);
     }
 }

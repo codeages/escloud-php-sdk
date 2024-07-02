@@ -1,6 +1,6 @@
 <?php
 
-namespace ESCloud\SDK\test\Service;
+namespace ESCloud\SDK\Tests\Service;
 
 use ESCloud\SDK\Service\WeChatService;
 use ESCloud\SDK\Tests\BaseTestCase;

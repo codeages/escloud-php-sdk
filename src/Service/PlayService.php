@@ -47,6 +47,6 @@ class PlayService extends BaseService
 
         $schema = empty($options['ssl']) ? 'http' : 'https';
 
-        return sprintf($schema . '://%s/sdk_api/download?%s', $this->host, http_build_query($params));
+        return sprintf($schema.'://%s/sdk_api/download?%s', $this->host, http_build_query($params));
     }
 }

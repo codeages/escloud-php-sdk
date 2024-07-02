@@ -2,16 +2,12 @@
 
 namespace ESCloud\SDK\Tests\Service;
 
-use ESCloud\SDK\Tests\BaseTestCase;
 use ESCloud\SDK\Service\DrpService;
+use ESCloud\SDK\Tests\BaseTestCase;
 
 class DrpServiceTest extends BaseTestCase
 {
-    public function testPostData()
-    {
-    }
-
-    public function testParseRegisterToken_normal()
+    public function testParseRegisterTokenNormal()
     {
         $data = array(
             'agency_id' => '120',
@@ -34,7 +30,7 @@ class DrpServiceTest extends BaseTestCase
         $this->assertEquals($nonce, $actualData['nonce']);
     }
 
-    public function testParseToken_normal()
+    public function testParseTokenNormal()
     {
         $data = array(
             'distribution_type' => 'courseOrder',
