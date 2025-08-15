@@ -8,6 +8,7 @@ use ESCloud\SDK\Service\AIService;
 use ESCloud\SDK\Service\DrpService;
 use ESCloud\SDK\Service\ESopService;
 use ESCloud\SDK\Service\InspectionService;
+use ESCloud\SDK\Service\MapService;
 use ESCloud\SDK\Service\MobileService;
 use ESCloud\SDK\Service\MpService;
 use ESCloud\SDK\Service\NotificationService;
@@ -187,6 +188,14 @@ class ESCloudSDK
     public function getPlatformNewsService()
     {
         return $this->getService('PlatformNews');
+    }
+
+    /**
+     * @return MapService
+     */
+    public function getMapService()
+    {
+        return $this->getService('Map', true);
     }
 
     /**
