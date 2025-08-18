@@ -6,7 +6,7 @@ use ESCloud\SDK\Exception\SDKException;
 
 class MapService extends BaseService
 {
-    protected $host = 'map.edusoho.cn';
+    protected $host = 'map.vviioo.com';
 
     protected $service = 'Map';
 
